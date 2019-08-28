@@ -30,4 +30,9 @@ C:\react-native-maps-demo> npm install react-native-maps --save
 
 # 10. npm add package for map clustering 
 C:\react-native-maps-demo> npm install react-native-map-clustering --save
+
+# 11. Added custom map clustering component from (https://github.com/venits/react-native-map-clustering),
+- Copied MapView folder from react-native-map-clustering project to react-native-maps-demo project root folder.
+
+
     

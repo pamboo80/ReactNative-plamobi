@@ -16,7 +16,8 @@ import {
   StatusBar
 } from 'react-native';
 
-import MapView from 'react-native-map-clustering';
+//import MapView from './index';
+import MapWithClustering from './MapView/MapWithClustering';
 import {Marker} from 'react-native-maps';
 
 import {
@@ -35,7 +36,7 @@ const App = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <MapView  
+          <MapWithClustering  
             region={{  
               latitude: 52.5,  
               longitude: 19.2,  
@@ -52,7 +53,7 @@ const App = () => {
             <Marker coordinate={{ latitude: 53.1, longitude: 18.8 }} />  
             <Marker coordinate={{ latitude: 52.9, longitude: 19.4 }} />  
             <Marker coordinate={{ latitude: 52.2, longitude: 21 }} />  
-          </MapView>
+          </MapWithClustering>
         </ScrollView>
       </SafeAreaView>
     </Fragment>
