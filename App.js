@@ -16,6 +16,9 @@ import {
   StatusBar,
 } from 'react-native';
 
+import MapView from 'react-native-map';
+import { Marker } from 'react-native-maps';
+
 import {
   Header,
   LearnMoreLinks,
@@ -32,40 +35,24 @@ const App = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
+          <MapView  
+            region={{  
+              latitude: 52.5,  
+              longitude: 19.2,  
+              latitudeDelta: 8.5,  
+              longitudeDelta: 8.5  
+            }}  
+            style={{ width: 400, height: 800 }}  
+          >  
+            <Marker coordinate={{ latitude: 52.0, longitude: 18.2 }} />  
+            <Marker coordinate={{ latitude: 52.4, longitude: 18.7 }} />  
+            <Marker coordinate={{ latitude: 52.1, longitude: 18.4 }} />  
+            <Marker coordinate={{ latitude: 52.6, longitude: 18.3 }} />  
+            <Marker coordinate={{ latitude: 51.6, longitude: 18.0 }} />  
+            <Marker coordinate={{ latitude: 53.1, longitude: 18.8 }} />  
+            <Marker coordinate={{ latitude: 52.9, longitude: 19.4 }} />  
+            <Marker coordinate={{ latitude: 52.2, longitude: 21 }} />  
+          </MapView>
         </ScrollView>
       </SafeAreaView>
     </Fragment>

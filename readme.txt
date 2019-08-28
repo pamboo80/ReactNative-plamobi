@@ -10,7 +10,7 @@ C:\react-native-maps-demo> react-native run-android
 # 4. Push source to the git
 C:\react-native-maps-demo> git add -A
 C:\react-native-maps-demo> git commit -m "Added the boilerplate project modules."
-C:\react-native-maps-demo> git Push
+C:\react-native-maps-demo> git push
 
 # 5. Pull the source code in different machine and start modifying the project
 C:\> git clone https://pamboo80@bitbucket.org/pamboo80/react-native-maps-demo.git
@@ -24,3 +24,8 @@ keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddeb
 OR use the newly pushed file - android\app\debug.keystore ]
 
 # 8. App name changed for Android. (Commited)
+
+# 9. npm add packages for maps
+C:\react-native-maps-demo> npm install react-native-maps --save
+
+    
