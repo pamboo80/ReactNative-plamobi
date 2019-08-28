@@ -1,4 +1,4 @@
-package com.boilerplateproject;
+package com.reactnative.maps;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "boilerplateProject";
+        return "react-native-maps-demo";
     }
 }

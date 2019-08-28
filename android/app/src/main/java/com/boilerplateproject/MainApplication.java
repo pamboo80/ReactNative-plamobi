@@ -1,4 +1,4 @@
-package com.boilerplateproject;
+package com.reactnative.maps;
 
 import android.app.Application;
 import android.util.Log;

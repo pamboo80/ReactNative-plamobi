@@ -14,3 +14,13 @@ C:\react-native-maps-demo> git Push
 
 # 5. Pull the source code in different machine and start modifying the project
 C:\> git clone https://pamboo80@bitbucket.org/pamboo80/react-native-maps-demo.git
+
+# 6. Install packages to start working on the new machine
+C:\react-native-maps-demo> npm install
+
+# 7. Build and install android app to the device (from the new development machine)
+C:\react-native-maps-demo> react-native run-android [either you can create your android keygen using 
+keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000
+OR use the newly pushed file - android\app\debug.keystore ]
+
+# 8. App name changed for Android. (Commited)
