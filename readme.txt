@@ -25,7 +25,9 @@ OR use the newly pushed file - android\app\debug.keystore ]
 
 # 8. App name changed for Android. (Commited)
 
-# 9. npm add packages for maps
+# 9. npm add package for map
 C:\react-native-maps-demo> npm install react-native-maps --save
 
+# 10. npm add package for map clustering 
+C:\react-native-maps-demo> npm install react-native-map-clustering --save
     

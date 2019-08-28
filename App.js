@@ -16,7 +16,7 @@ import {
   StatusBar
 } from 'react-native';
 
-import MapView from 'react-native-maps';
+import MapView from 'react-native-map-clustering';
 import {Marker} from 'react-native-maps';
 
 import {
