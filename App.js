@@ -13,11 +13,11 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar,
+  StatusBar
 } from 'react-native';
 
-import MapView from 'react-native-map';
-import { Marker } from 'react-native-maps';
+import MapView from 'react-native-maps';
+import {Marker} from 'react-native-maps';
 
 import {
   Header,

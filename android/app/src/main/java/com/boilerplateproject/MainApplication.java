@@ -1,4 +1,4 @@
-package com.reactnative.maps;
+package com.reactnative.mapDemo;
 
 import android.app.Application;
 import android.util.Log;
