@@ -1,41 +1,30 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Fragment} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
+  /*ScrollView,
   View,
-  Text,
+  Text,*/
   StatusBar
 } from 'react-native';
 
-//import MapView from './index';
-import MapWithClustering from './MapView/MapWithClustering';
-import {Marker} from 'react-native-maps';
-
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
+  /*Header,
+  LearnMoreLinks,*/
+  Colors /*,
   DebugInstructions,
-  ReloadInstructions,
+  ReloadInstructions,*/
 } from 'react-native/Libraries/NewAppScreen';
 
-const App = () => {
+//import MapView from './index';
+import MapWithClustering from '../../components/MapView/MapWithClustering';
+import {Marker} from 'react-native-maps';
+
+export default Home = () => {
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
+      <SafeAreaView>        
           <MapWithClustering  
             region={{  
               latitude: 52.5,  
@@ -53,8 +42,8 @@ const App = () => {
             <Marker coordinate={{ latitude: 53.1, longitude: 18.8 }} />  
             <Marker coordinate={{ latitude: 52.9, longitude: 19.4 }} />  
             <Marker coordinate={{ latitude: 52.2, longitude: 21 }} />  
-          </MapWithClustering>
-        </ScrollView>
+            
+          </MapWithClustering>        
       </SafeAreaView>
     </Fragment>
   );
@@ -98,5 +87,3 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
-
-export default App;

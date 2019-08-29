@@ -30,9 +30,14 @@ export default class MapWithClustering extends Component {
     this.createMarkersOnMap();
   }
 
-  componentWillReceiveProps() {
+
+  //This method going to get depreceated.
+  //https://hackernoon.com/replacing-componentwillreceiveprops-with-getderivedstatefromprops-c3956f7ce607  
+  /*componentWillReceiveProps() { 
     this.createMarkersOnMap();
   }
+  */
+  //Below componentDidUpdate will do the same
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.children !== prevProps.children) {
