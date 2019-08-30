@@ -39,3 +39,14 @@ C:\react-native-maps-demo> npm install react-native-gesture-handler --save
 
 # 13. Added bugsnag module to track crashing
 C:\react-native-maps-demo> npm install bugsnag-react-native --save
+
+# 14. Add npm packages for native form elements
+C:\react-native-maps-demo> npm install react-native-elements --save
+C:\react-native-maps-demo> npm install react-native-vector-icons --save
+
+# 15. Added missing dependencies packages
+C:\react-native-maps-demo> npm install typescript --save 
+C:\react-native-maps-demo> npm install typescript-eslint --save 
+C:\react-native-maps-demo> npm install eslint@5.0.0 --save 
+C:\react-native-maps-demo> npm install eslint-plugin-react --save 
+C:\react-native-maps-demo> npm install eslint-plugin-react-native --save 

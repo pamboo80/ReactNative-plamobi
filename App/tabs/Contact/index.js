@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, Text, Image, View, StyleSheet, Dimensions } from 'react-native';
 
-//import { FormLabel, FormInput, Button } from 'react-native-elements';
+import { FormLabel, FormInput, Button } from 'react-native-elements';
 
 const { width } = Dimensions.get('window');
 
@@ -34,7 +34,7 @@ export default class Contact extends React.Component {
           <Image resizeMode='contain' style={styles.logo} source={require('../../assets/images/logo.png')} />
         </View>
         <Text style={styles.title}>Contact Us</Text>
-        {/* <FormLabel>Name</FormLabel>
+        <FormLabel>Name</FormLabel>
         <FormInput value={this.state.name} onChangeText={(text) => this.updateFormInput('name', text)} />
         <FormLabel>Email</FormLabel>
         <FormInput value={this.state.email} onChangeText={(text) => this.updateFormInput('email', text)} />
@@ -47,7 +47,7 @@ export default class Contact extends React.Component {
           large
           backgroundColor="#fe0000"
           buttonStyle={styles.button}
-        /> */}
+        />
       </View>
     )
   }
