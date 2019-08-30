@@ -22,12 +22,37 @@ import {
 import MapWithClustering from '../../components/MapView/MapWithClustering';
 import {Marker} from 'react-native-maps';
 
+import Geolocation from 'react-native-geolocation-service';
+
 const {width, height} = Dimensions.get('window');
 const SCREEN_HEIGHT = height;
 const SCREEN_WIDTH = width;
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
+export async function requestLocationPermission(parent) 
+{
+    try {                
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: "Location Permission",
+          message: "App needs access to get your location!",
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        parent.getLocation();          
+      } else {
+        console.log('location permission denied');
+      }
+    } catch (err) {
+      console.warn(err);
+    };
+};
 
 export default class Home extends React.Component {
 
@@ -50,68 +75,92 @@ export default class Home extends React.Component {
       error: null
     };
   }
-
   
-  componentDidMount() {
-
-    async function requestLocationPermission() {
-      try {
-
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-          {
-            title: "Location Permission",
-            message: "App needs access to get your location!",
-            buttonNeutral: 'Ask Me Later',
-            buttonNegative: 'Cancel',
-            buttonPositive: 'OK',
-          },
-        );
-
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          this.watchID = navigator.geolocation.getCurrentPosition((position) => {
-            let lat = parseFloat(position.coords.latitude);
-            let long = parseFloat(position.coords.longitude);
-      
-            let initialRegion = {
-              latitude: lat,
-              longitude: long,
-              latitudeDelta: LATITUDE_DELTA,
-              longitudeDelta:LONGITUDE_DELTA
-            };
-      
-            this.setState({initialPosition: initialRegion});
-            this.setState({markerPosition: initialRegion});
-        },
-        (error) => this.setState({error: error}),
-        {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000});
-      
-        this.watchID =  navigator.geoLocation.watchPosition((position) => {
-            let lat = parseFloat(position.coords.latitude);
-            let long = parseFloat(position.coords.longitude);
-      
-            let lastRegion = {
-              latitude: lat,
-              longitude: long,
-              longitudeDelta: LONGITUDE_DELTA,
-              latitudeDelta: LATITUDE_DELTA
-            };
-            this.setState({initialPosition: lastRegion});
-            this.setState({markerPosition: lastRegion});
-          });
-
-        } else {
-          console.log('Camera permission denied');
-        }
-      } catch (err) {
-        console.warn(err);
-      }
-  };
+  getLocation()
+  {
+      /*
+      this.watchID = navigator.geolocation.getCurrentPosition((position) => {
+        let lat = parseFloat(position.coords.latitude);
+        let long = parseFloat(position.coords.longitude);
+  
+        let initialRegion = {
+          latitude: lat,
+          longitude: long,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta:LONGITUDE_DELTA
+        };
+  
+        this.setState({initialPosition: initialRegion});
+        this.setState({markerPosition: initialRegion});
+      },
+      (error) => this.setState({error: error}),
+      {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000});
+      */                       
+      Geolocation.getCurrentPosition(
+        (position) => {
+          let lat = parseFloat(position.coords.latitude);
+          let long = parseFloat(position.coords.longitude);
     
+          let initialRegion = {
+            latitude: lat,
+            longitude: long,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta:LONGITUDE_DELTA
+          };        
+
+          this.setState({initialPosition: initialRegion});
+          this.setState({markerPosition: initialRegion});
+        },
+        (error) => {
+          this.setState({error: error.message});
+        },
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 10000 ,showLocationDialog: true, forceRequestLocation:true }
+      );
+
+      /*
+      this.watchID =  navigator.geoLocation.watchPosition((position) => {
+        let lat = parseFloat(position.coords.latitude);
+        let long = parseFloat(position.coords.longitude);
+
+        let lastRegion = {
+          latitude: lat,
+          longitude: long,
+          longitudeDelta: LONGITUDE_DELTA,
+          latitudeDelta: LATITUDE_DELTA
+        };
+        this.setState({initialPosition: lastRegion});
+        this.setState({markerPosition: lastRegion});
+      });*/      
+      this.watchID = Geolocation.watchPosition(
+        (position) => {
+          let lat = parseFloat(position.coords.latitude);
+          let long = parseFloat(position.coords.longitude);
+    
+          let lastRegion = {
+            latitude: lat,
+            longitude: long,
+            longitudeDelta: LONGITUDE_DELTA,
+            latitudeDelta: LATITUDE_DELTA
+          };
+          this.setState({initialPosition: lastRegion});
+          this.setState({markerPosition: lastRegion});
+        },
+        (error) => {
+          this.setState({error: error.message});
+        },
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 10000 ,showLocationDialog: true, forceRequestLocation:true }
+      );   
+  }
+
+  async componentDidMount() {          
+    await requestLocationPermission(this);
   };
 
   componentWillUnmount() {
-    navigator.geoLocation.clearWatch(this.watchID);
+    if(this.watchID!=null){
+      //navigator.geoLocation.clearWatch(this.watchID);
+      Geolocation.watchPosition(this.watchID);
+    }    
   }
 
   render() {

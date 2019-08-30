@@ -50,3 +50,6 @@ C:\react-native-maps-demo> npm install typescript-eslint --save
 C:\react-native-maps-demo> npm install eslint@5.0.0 --save 
 C:\react-native-maps-demo> npm install eslint-plugin-react --save 
 C:\react-native-maps-demo> npm install eslint-plugin-react-native --save 
+
+# 16. Add geolocation 
+C:\react-native-maps-demo> npm install react-native-geolocation-service --save
