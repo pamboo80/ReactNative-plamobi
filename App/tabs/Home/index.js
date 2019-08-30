@@ -3,11 +3,12 @@ import {
   SafeAreaView,
   StyleSheet,
   /*ScrollView, 
-  Text,*/
+  */Text,
   View,
   StatusBar,
   Dimensions,
-  PermissionsAndroid
+  PermissionsAndroid,
+  Platform
 } from 'react-native';
 
 import {
@@ -20,6 +21,7 @@ import {
 
 //import MapView from './index';
 import MapWithClustering from '../../components/MapView/MapWithClustering';
+import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 
 import Geolocation from 'react-native-geolocation-service';
@@ -28,7 +30,7 @@ const {width, height} = Dimensions.get('window');
 const SCREEN_HEIGHT = height;
 const SCREEN_WIDTH = width;
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.922;
+const LATITUDE_DELTA = 0.009; // More the value - more zoom out
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export async function requestLocationPermission(parent) 
@@ -60,13 +62,12 @@ export default class Home extends React.Component {
     super(props);
 
     this.watchID = null;
-
     this.state = {
       initialPosition: {
-        latitude: 0,
-        longitude: 0,
-        latitudeDelta: 0,
-        longitudeDelta: 0
+        latitude: 0, /*40.712776*/
+        longitude: 0, /*-74.005974*/
+        latitudeDelta: 0.009,
+        longitudeDelta: 0.009
       },
       markerPosition: {
         latitude: 0,
@@ -74,6 +75,7 @@ export default class Home extends React.Component {
       },
       error: null
     };
+
   }
   
   getLocation()
@@ -98,7 +100,7 @@ export default class Home extends React.Component {
       */                       
       Geolocation.getCurrentPosition(
         (position) => {
-          let lat = parseFloat(position.coords.latitude);
+          let lat = parseFloat(position.coords.latitude); 
           let long = parseFloat(position.coords.longitude);
     
           let initialRegion = {
@@ -133,6 +135,14 @@ export default class Home extends React.Component {
       });*/      
       this.watchID = Geolocation.watchPosition(
         (position) => {
+
+          const { latitude, longitude } = position.coords;
+
+          const newCoordinate = {
+            latitude,
+            longitude
+          };
+
           let lat = parseFloat(position.coords.latitude);
           let long = parseFloat(position.coords.longitude);
     
@@ -144,6 +154,18 @@ export default class Home extends React.Component {
           };
           this.setState({initialPosition: lastRegion});
           this.setState({markerPosition: lastRegion});
+
+          if (Platform.OS === "android") {
+            if (this.marker) {
+              this.marker._component.animateMarkerToCoordinate(
+                newCoordinate,
+                500
+              );
+            }
+          } else {
+            
+          }
+
         },
         (error) => {
           this.setState({error: error.message});
@@ -159,29 +181,45 @@ export default class Home extends React.Component {
   componentWillUnmount() {
     if(this.watchID!=null){
       //navigator.geoLocation.clearWatch(this.watchID);
-      Geolocation.watchPosition(this.watchID);
+      Geolocation.clearWatch(this.watchID);
     }    
   }
+
+  // getMapRegion = () => ({
+  //   latitude: this.state.initialPosition.latitude,
+  //   longitude: this.state.initialPosition.longitude,
+  //   latitudeDelta: LATITUDE_DELTA,
+  //   longitudeDelta:LONGITUDE_DELTA
+  // });
 
   render() {
     return (      
       <View style={styles.container}>
-          <MapWithClustering            
-            region={this.state.initialPosition}
+          <MapView            
+            region={this.state.initialPosition}   /*{this.getMapRegion()} */         
             loadingEnabled={true}
             loadingIndicatorColor={'#3a9def'}
-            style={styles.map}       
+            style={styles.map}               
           >  
-          <Marker
-          coordinate={this.state.markerPosition}
-          title={"title"}
-          description={"description"}>
-            <View style={styles.radius}>
-              <View style={styles.marker} />
-            </View>
-          </Marker>    
-          </MapWithClustering>             
-    </View>
+            <Marker.Animated
+              ref={marker => {
+                this.marker = marker;
+              }}
+              coordinate={this.state.markerPosition}
+              title={"title"}
+              description={"description"}>
+                <View style={styles.radius}>
+                  <View style={styles.marker} />
+                </View>
+            </Marker.Animated>               
+          </MapView>             
+      </View>   
+      // <View>
+      //   <Text> {this.state.initialPosition.latitude} </Text>
+      //   <Text> {this.state.initialPosition.longitude} </Text>
+      //   <Text> {this.state.initialPosition.latitudeDelta} </Text>
+      //   <Text> {this.state.initialPosition.longitudeDelta} </Text>
+      // </View>
     )
   }
 }
