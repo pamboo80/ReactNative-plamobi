@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, Text, Image, View, StyleSheet, Dimensions } from 'react-native';
 
-import { FormLabel, FormInput, Button } from 'react-native-elements';
+import { Input, Button } from 'react-native-elements';
 
 const { width } = Dimensions.get('window');
 
@@ -30,16 +30,15 @@ export default class Contact extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        
         <View style={styles.logoContainer}>
           <Image resizeMode='contain' style={styles.logo} source={require('../../assets/images/logo.png')} />
         </View>
         <Text style={styles.title}>Contact Us</Text>
-        <FormLabel>Name</FormLabel>
-        <FormInput value={this.state.name} onChangeText={(text) => this.updateFormInput('name', text)} />
-        <FormLabel>Email</FormLabel>
-        <FormInput value={this.state.email} onChangeText={(text) => this.updateFormInput('email', text)} />
-        <FormLabel>Message</FormLabel>
-        <FormInput value={this.state.message} onChangeText={(text) => this.updateFormInput('message', text)} />
+        
+        <Input placeholder="Name" value={this.state.name} onChangeText={(text) => this.updateFormInput('name', text)} />        
+        <Input placeholder="Email" value={this.state.email} onChangeText={(text) => this.updateFormInput('email', text)} />
+        <Input placeholder="Message" value={this.state.message} onChangeText={(text) => this.updateFormInput('message', text)} />
           
         <Button
           onPress={this.sendMessage}
@@ -48,6 +47,7 @@ export default class Contact extends React.Component {
           backgroundColor="#fe0000"
           buttonStyle={styles.button}
         />
+
       </View>
     )
   }
