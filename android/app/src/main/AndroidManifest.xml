@@ -2,7 +2,8 @@
   package="com.reactnative.mapDemo">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
@@ -24,8 +25,7 @@
 
       <meta-data
        android:name="com.google.android.geo.API_KEY"
-       android:value="AIzaSyBHV5_9HpeLIov3xAanRbgZlIfDAv_Ep_I"/>
-       
+       android:value="AIzaSyBHV5_9HpeLIov3xAanRbgZlIfDAv_Ep_I"/>       
     </application>
 
 </manifest>

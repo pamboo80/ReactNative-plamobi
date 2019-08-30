@@ -2,10 +2,12 @@ import React, {Fragment} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  /*ScrollView,
-  View,
+  /*ScrollView, 
   Text,*/
-  StatusBar
+  View,
+  StatusBar,
+  Dimensions,
+  PermissionsAndroid
 } from 'react-native';
 
 import {
@@ -20,34 +22,120 @@ import {
 import MapWithClustering from '../../components/MapView/MapWithClustering';
 import {Marker} from 'react-native-maps';
 
-export default Home = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>        
-          <MapWithClustering  
-            region={{  
-              latitude: 52.5,  
-              longitude: 19.2,  
-              latitudeDelta: 8.5,  
-              longitudeDelta: 8.5  
-            }}  
-            style={{ width: 400, height: 800 }}  
+const {width, height} = Dimensions.get('window');
+const SCREEN_HEIGHT = height;
+const SCREEN_WIDTH = width;
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
+export default class Home extends React.Component {
+
+  constructor(props){
+    super(props);
+
+    this.watchID = null;
+
+    this.state = {
+      initialPosition: {
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0,
+        longitudeDelta: 0
+      },
+      markerPosition: {
+        latitude: 0,
+        longitude: 0
+      },
+      error: null
+    };
+  }
+
+  
+  componentDidMount() {
+
+    async function requestLocationPermission() {
+      try {
+
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          {
+            title: "Location Permission",
+            message: "App needs access to get your location!",
+            buttonNeutral: 'Ask Me Later',
+            buttonNegative: 'Cancel',
+            buttonPositive: 'OK',
+          },
+        );
+
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          this.watchID = navigator.geolocation.getCurrentPosition((position) => {
+            let lat = parseFloat(position.coords.latitude);
+            let long = parseFloat(position.coords.longitude);
+      
+            let initialRegion = {
+              latitude: lat,
+              longitude: long,
+              latitudeDelta: LATITUDE_DELTA,
+              longitudeDelta:LONGITUDE_DELTA
+            };
+      
+            this.setState({initialPosition: initialRegion});
+            this.setState({markerPosition: initialRegion});
+        },
+        (error) => this.setState({error: error}),
+        {enableHighAccuracy: false, timeout: 20000, maximumAge: 1000});
+      
+        this.watchID =  navigator.geoLocation.watchPosition((position) => {
+            let lat = parseFloat(position.coords.latitude);
+            let long = parseFloat(position.coords.longitude);
+      
+            let lastRegion = {
+              latitude: lat,
+              longitude: long,
+              longitudeDelta: LONGITUDE_DELTA,
+              latitudeDelta: LATITUDE_DELTA
+            };
+            this.setState({initialPosition: lastRegion});
+            this.setState({markerPosition: lastRegion});
+          });
+
+        } else {
+          console.log('Camera permission denied');
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+  };
+    
+  };
+
+  componentWillUnmount() {
+    navigator.geoLocation.clearWatch(this.watchID);
+  }
+
+  render() {
+    return (      
+      <View style={styles.container}>
+          <MapWithClustering            
+            region={this.state.initialPosition}
+            loadingEnabled={true}
+            loadingIndicatorColor={'#3a9def'}
+            style={styles.map}       
           >  
-            <Marker coordinate={{ latitude: 52.0, longitude: 18.2 }} />  
-            <Marker coordinate={{ latitude: 52.4, longitude: 18.7 }} />  
-            <Marker coordinate={{ latitude: 52.1, longitude: 18.4 }} />  
-            <Marker coordinate={{ latitude: 52.6, longitude: 18.3 }} />  
-            <Marker coordinate={{ latitude: 51.6, longitude: 18.0 }} />  
-            <Marker coordinate={{ latitude: 53.1, longitude: 18.8 }} />  
-            <Marker coordinate={{ latitude: 52.9, longitude: 19.4 }} />  
-            <Marker coordinate={{ latitude: 52.2, longitude: 21 }} />  
-            
-          </MapWithClustering>        
-      </SafeAreaView>
-    </Fragment>
-  );
-};
+          <Marker
+          coordinate={this.state.markerPosition}
+          title={"title"}
+          description={"description"}>
+            <View style={styles.radius}>
+              <View style={styles.marker} />
+            </View>
+          </Marker>    
+          </MapWithClustering>             
+    </View>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -85,5 +173,38 @@ const styles = StyleSheet.create({
     padding: 4,
     paddingRight: 12,
     textAlign: 'right',
+  }, 
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF'
   },
+  map: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0
+  },
+  radius: {
+    height: 50,
+    width: 50,
+    borderRadius: 50 / 2,
+    overflow: 'hidden',
+    backgroundColor: 'rgba(0, 122, 255, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 122, 255, 0.3)',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  marker: {
+    height: 20,
+    width: 20,
+    borderWidth: 3,
+    borderColor: 'white',
+    borderRadius: 20 / 2,
+    overflow: 'hidden',
+    backgroundColor: '#007AFF'
+  }
 });
