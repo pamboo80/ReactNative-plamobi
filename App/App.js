@@ -11,10 +11,6 @@ import {
   Image, StyleSheet
 } from 'react-native';
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
 import {createBottomTabNavigator,createAppContainer} from 'react-navigation';
 
 import Home from './tabs/Home';

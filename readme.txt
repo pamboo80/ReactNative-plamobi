@@ -31,9 +31,11 @@ C:\react-native-maps-demo> npm install react-native-maps --save
 # 10. npm add package for map clustering 
 C:\react-native-maps-demo> npm install react-native-map-clustering --save
 
-# 11. Added custom map clustering component from (https://github.com/venits/react-native-map-clustering),
-- Copied MapView folder from react-native-map-clustering project to react-native-maps-demo project root folder.
+# 11. Added custom map clustering component from (https://github.com/venits/react-native-map-clustering)
 
 # 12. Add npm packages for mutiple screens/views navigations
 C:\react-native-maps-demo> npm install react-navigation --save
 C:\react-native-maps-demo> npm install react-native-gesture-handler --save
+
+# 13. Added bugsnag module to track crashing
+C:\react-native-maps-demo> npm install bugsnag-react-native --save
