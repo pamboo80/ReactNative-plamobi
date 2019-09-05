@@ -53,3 +53,10 @@ C:\react-native-maps-demo> npm install eslint-plugin-react-native --save
 
 # 16. Add geolocation 
 C:\react-native-maps-demo> npm install react-native-geolocation-service --save
+
+# 17. Navigation bar updates like plaMobi Adbobe XD design -
+C:\react-native-maps-demo> npm install react-native-multibar --save
+C:\react-native-maps-demo> npm install babel-preset-react-native --save
+C:\react-native-maps-demo> npm install react-native-overflow-view --save
+C:\react-native-maps-demo> npm install react-native-quick-actions --save      
+    
