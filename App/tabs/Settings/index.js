@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {SafeAreaView, Text} from 'react-native';
 
-export default class Settings extends Component {
+export default class Settings extends React.Component {
     render() {
         return (
             <SafeAreaView style={{
@@ -15,4 +15,4 @@ export default class Settings extends Component {
     }
 }
 
-export {Settings};
+export{Settings};

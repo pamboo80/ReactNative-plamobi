@@ -5,12 +5,12 @@ import {
   } from 'react-native';
 import {createAppContainer, createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {MultiBar, MultiBarToggle} from 'react-native-multibar';
+import {MultiBar, MultiBarToggle} from '../components/Multibar';
 
 import Home from '../tabs/Home';
-import Menu from '../tabs/Menu';
-import Contact from '../tabs/Contact';
-import Bookmarks from '../tabs/Bookmarks';
+import List from '../tabs/List';
+import Chat from '../tabs/Chat';
+import Notifications from '../tabs/Notifications';
 import Settings from '../tabs/Settings';
 
 import {Routes} from "./Routes";
@@ -22,19 +22,19 @@ const TabsNavigator = createBottomTabNavigator({
               tabBarLabel: 'Home',
               tabBarIcon: ({ tintColor }) => (
                 <Image 
-                  source={require('../assets/images/homeicon.png')}
+                  source={require('../assets/images/ic_map.png')}
                   style={[styles.icon, {tintColor: tintColor}]}
                 />
               )
             }
           },
-    [Routes.TabsMenu]: {
-    screen: Menu,
+    [Routes.TabsList]: {
+    screen: List,
     navigationOptions: {
-        tabBarLabel: 'Menu',
+        tabBarLabel: 'List',
         tabBarIcon: ({ tintColor }) => (
         <Image
-            source={require('../assets/images/menuicon.png')}
+            source={require('../assets/images/ic_list.png')}
             style={[styles.icon, {tintColor: tintColor}]}
         />
         )
@@ -44,51 +44,51 @@ const TabsNavigator = createBottomTabNavigator({
         screen: () => null,
         navigationOptions: ({navigation}) => ({
             tabBarIcon: () => (
-                <MultiBarToggle
+                <MultiBarToggle                   
                     navigation={navigation}
-                    actionSize={30}
+                    actionSize={40}
+                    toggleColor={'#1A237E'}
                     routes={[
                         {
                             routeName: Routes.OtherScreen,
-                            color: '#FF8360',
-                            icon: (
-                                <Icon
-                                    name="rocket"
-                                    color="#333333"
-                                    size={15}
+                            color: '#1A237E',
+                            icon: 
+                               (
+                                <Image
+                                  source={require('../assets/images/ic_edit.png')}     
+                                  style={[expandStyles.icon]}                              
                                 />
-                            )
+                              )
                         },
                         {
                             routeName: Routes.OtherScreen,
-                            color: '#E8E288',
-                            icon: (
-                                <Icon
-                                    name="dashboard"
-                                    color="#333333"
-                                    size={15}
-                                />
-                            )
+                            color: '#1A237E',
+                            icon: 
+                                (
+                                    <Image
+                                    source={require('../assets/images/ic_message_email.png')} 
+                                    style={[expandStyles.icon]}                                       
+                                    />
+                                )                              
                         },
                         {
                             routeName: Routes.OtherScreen,
-                            color: '#7DCE82',
-                            icon: (
-                                <Icon
-                                    name="gears"
-                                    color="#333333"
-                                    size={15}
+                            color: '#1A237E',
+                            icon: 
+                            (
+                                <Image
+                                source={require('../assets/images/ic_search.png')}   
+                                style={[expandStyles.icon]}                                  
                                 />
-                            )
+                            )                            
                         },
                     ]}
-                    icon={(
-                        <Icon
-                            name="plus"
-                            color="#FFFFFF"
-                            size={24}
+                    icon={ (
+                        <Image
+                        source={require('../assets/images/ic_plus.png')}     
+                        style={[styles.icon]}                 
                         />
-                    )}
+                    )} 
                 />
             )
         }),
@@ -96,38 +96,38 @@ const TabsNavigator = createBottomTabNavigator({
             navigationDisabled: true
         }
     },
-    [Routes.TabsContact]: {
-        screen: Contact,
+    [Routes.TabsChat]: {
+        screen: Chat,
         navigationOptions: {
-          tabBarLabel: 'Contact',
+          tabBarLabel: 'Chat',
           tabBarIcon: ({ tintColor }) => (
             <Image
-              source={require('../assets/images/contacticon.png')}
+              source={require('../assets/images/ic_chat.png')}
               style={[styles.icon, {tintColor: tintColor}]}
             />
           )
         }
     },
-    [Routes.TabsBookmarks]: {
-        screen: Bookmarks,
-        navigationOptions: () => ({
-            tabBarIcon: ({tintColor}) => (
-                <Icon
-                    name="user"
-                    color={tintColor}
-                    size={24}
-                />
+    [Routes.TabsNotifications]: {
+        screen: Notifications,
+        navigationOptions: {
+            tabBarLabel: 'Notifications',
+            tabBarIcon: ({ tintColor }) => (
+              <Image
+                source={require('../assets/images/ic_bell.png')}
+                style={[styles.icon, {tintColor: tintColor}]}
+              />
             )
-        })
+          }
     }
 }, {
     tabBarComponent: MultiBar,
     tabBarOptions: {
         showLabel: false,
         activeTintColor: '#F8F8F8',
-        inactiveTintColor: '#586589',
+        inactiveTintColor: '#F8F8F8',
         style: {
-            backgroundColor: '#171F33'
+            backgroundColor: '#3F51B5'
         },
         tabStyle: {}
     }
@@ -138,7 +138,14 @@ const styles = StyleSheet.create({
       width: 28,
       height: 28
     }
-  });
+});
+
+const expandStyles = StyleSheet.create({
+    icon: {
+      width: 22,
+      height: 22
+    }
+});
 
 const BaseNavigatorContainer = createAppContainer(createStackNavigator({
     [Routes.Tabs]: TabsNavigator,

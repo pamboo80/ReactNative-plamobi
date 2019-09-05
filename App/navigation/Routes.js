@@ -1,9 +1,9 @@
 const Routes = {
     Tabs: 'TABS',
     TabsHome: 'TABS_HOME',
-    TabsMenu: 'TABS_MENU',
-    TabsContact: 'TABS_CONTACT',
-    TabsBookmarks: 'TABS_BOOKMARKS',
+    TabsList: 'TABS_LIST',
+    TabsChat: 'TABS_CHAT',
+    TabsNotifications: 'TABS_NOTIFICATIONS',
     OtherScreen: 'OTHER_SCREEN'
 };
 

@@ -5,7 +5,7 @@ import { Input, Button } from 'react-native-elements';
 
 const { width } = Dimensions.get('window');
 
-export default class Contact extends React.Component {
+export default class Chat extends React.Component {
 
   state = {
     name: '',
@@ -47,7 +47,6 @@ export default class Contact extends React.Component {
           backgroundColor="#fe0000"
           buttonStyle={styles.button}
         />
-
       </View>
     )
   }

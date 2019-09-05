@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Menu from './routes/Menu';
+import List from './routes/List';
 import Appetizers from './routes/Appetizers';
 import Burgers from './routes/Burgers';
 
 import { createStackNavigator } from 'react-navigation';
 
 const routeConfig = {
-  Menu: { screen: Menu },
+  List: { screen: List },
   Appetizers: { screen: Appetizers },
   Burgers: { screen: Burgers },
 }

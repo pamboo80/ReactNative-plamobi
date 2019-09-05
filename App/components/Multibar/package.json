@@ -1,0 +1,59 @@
+{
+  "_from": "react-native-multibar",
+  "_id": "react-native-multibar@0.0.12",
+  "_inBundle": false,
+  "_integrity": "sha512-XjNlZ76bT9rnsAjvtfIxKmBW+H0D2uG7qnm4xmh/PAsJ5kKF21O8WmhYzYInc9auUlYy0qk9a2I4RuzqH/JM5A==",
+  "_location": "/react-native-multibar",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-native-multibar",
+    "name": "react-native-multibar",
+    "escapedName": "react-native-multibar",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-multibar/-/react-native-multibar-0.0.12.tgz",
+  "_shasum": "d4f161621f47636d671f876db9fc0b2bb4e91992",
+  "_spec": "react-native-multibar",
+  "_where": "C:\\vm\\bitbucket\\react-native\\react-native-maps-demo",
+  "author": {
+    "name": "Alex Melnyk"
+  },
+  "bugs": {
+    "url": "https://github.com/alex-melnyk/react-native-multibar/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "MultiBar is a TabBar component with an advanced button to make extra actions.",
+  "homepage": "https://github.com/alex-melnyk/react-native-multibar#readme",
+  "keywords": [
+    "React",
+    "Native",
+    "Navigation",
+    "TabBar"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "react-native-multibar",
+  "peerDependencies": {
+    "babel-preset-react-native": "^4.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-native": "^0.60.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-melnyk/react-native-multibar.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.12"
+}

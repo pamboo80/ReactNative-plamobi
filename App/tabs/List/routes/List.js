@@ -5,7 +5,7 @@ import { ListItem } from 'react-native-elements';
 
 import Header from '../Header';
 
-export default class Menu extends React.Component {
+export default class List extends React.Component {
   static navigationOptions = {
     ...Header
   }
