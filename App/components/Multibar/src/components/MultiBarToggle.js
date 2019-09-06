@@ -100,7 +100,7 @@ class MultiBarToggle extends Component {
       const radius = 80;
 
       const x = radius * Math.cos(-angle * Math.PI / 180);
-      const y = radius * Math.sin(-angle * Math.PI / 180);
+      const y = (radius * Math.sin(-angle * Math.PI / 180) ) * 1.15;
 
       const activationScale = this[`actionActivation_${i}`].interpolate({
         inputRange: [0, 0.5, 1],
