@@ -13,7 +13,9 @@ import Chat from '../tabs/Chat';
 import Notifications from '../tabs/Notifications';
 import Settings from '../tabs/Settings';
 
-import {Routes} from "./Routes";
+import {Routes} from "./BottomTabRoutes";
+
+import { primaryLight, primaryDark } from '../global.styles';
 
 const TabsNavigator = createBottomTabNavigator({
     [Routes.TabsHome]: {
@@ -47,11 +49,11 @@ const TabsNavigator = createBottomTabNavigator({
                 <MultiBarToggle                   
                     navigation={navigation}
                     actionSize={40}
-                    toggleColor={'#1A237E'}
+                    toggleColor={primaryDark}
                     routes={[
                         {
                             routeName: Routes.OtherScreen,
-                            color: '#1A237E',
+                            color: primaryDark,
                             icon: 
                                (
                                 <Image
@@ -62,7 +64,7 @@ const TabsNavigator = createBottomTabNavigator({
                         },
                         {
                             routeName: Routes.OtherScreen,
-                            color: '#1A237E',
+                            color: primaryDark,
                             icon: 
                                 (
                                     <Image
@@ -73,7 +75,7 @@ const TabsNavigator = createBottomTabNavigator({
                         },
                         {
                             routeName: Routes.OtherScreen,
-                            color: '#1A237E',
+                            color: primaryDark,
                             icon: 
                             (
                                 <Image
@@ -127,7 +129,7 @@ const TabsNavigator = createBottomTabNavigator({
         activeTintColor: '#F8F8F8',
         inactiveTintColor: '#F8F8F8',
         style: {
-            backgroundColor: '#3F51B5'
+            backgroundColor: primaryLight
         },
         tabStyle: {}
     }

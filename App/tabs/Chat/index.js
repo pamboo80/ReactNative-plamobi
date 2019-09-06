@@ -2,6 +2,7 @@ import React from 'react';
 import { TextInput, Text, Image, View, StyleSheet, Dimensions } from 'react-native';
 
 import { Input, Button } from 'react-native-elements';
+import { primaryDark } from '../../global.styles';
 
 const { width } = Dimensions.get('window');
 
@@ -44,7 +45,7 @@ export default class Chat extends React.Component {
           onPress={this.sendMessage}
           title="Submit"
           large
-          backgroundColor="#fe0000"
+          backgroundColor={primaryDark}
           buttonStyle={styles.button}
         />
       </View>
@@ -55,7 +56,7 @@ export default class Chat extends React.Component {
 const styles = StyleSheet.create({
   title: {
     fontSize: 22,
-    marginLeft: 20,
+    marginLeft: 12,
     fontFamily: 'AlegreyaSansSC-Light',
   },
   container: {

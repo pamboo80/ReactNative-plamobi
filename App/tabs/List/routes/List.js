@@ -3,11 +3,8 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
 
-import Header from '../Header';
-
 export default class List extends React.Component {
   static navigationOptions = {
-    ...Header
   }
 
   render() {

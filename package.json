@@ -1,5 +1,5 @@
 {
-  "name": "react-native-maps-demo",
+  "name": "plamobi",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -25,6 +25,8 @@
     "react-native-quick-actions": "^0.3.12",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.12.1",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
     "typescript": "^3.6.2",
     "typescript-eslint": "0.0.1-alpha.0"
   },
