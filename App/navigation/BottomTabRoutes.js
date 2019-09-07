@@ -1,4 +1,4 @@
-const Routes = {
+const BottomTabRoutes = {
     Tabs: 'TABS',
     TabsHome: 'TABS_HOME',
     TabsList: 'TABS_LIST',
@@ -7,4 +7,4 @@ const Routes = {
     OtherScreen: 'OTHER_SCREEN'
 };
 
-export {Routes};
+export {BottomTabRoutes};

@@ -212,7 +212,8 @@ export default class Home extends React.Component {
                   <View style={styles.marker} />
                 </View>
             </Marker.Animated>               
-          </MapView>             
+          </MapView>      
+          <View style={styles.mapDrawerOverlay} />      
       </View>   
       // <View>
       //   <Text> {this.state.initialPosition.latitude} </Text>
@@ -273,6 +274,14 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0
+  },
+  mapDrawerOverlay: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: 0.0,
+    height: Dimensions.get('window').height,
+    width: 10,
   },
   radius: {
     height: 50,

@@ -13,7 +13,7 @@ import Chat from '../tabs/Chat';
 import Notifications from '../tabs/Notifications';
 import Settings from '../tabs/Settings';
 
-import {Routes} from "./BottomTabRoutes";
+import {BottomTabRoutes as Routes} from "./BottomTabRoutes";
 
 import { primaryLight, primaryDark } from '../global.styles';
 

@@ -107,18 +107,18 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     height: 56,
-    paddingTop: 8
+    paddingTop: 12
   },
   drawerTitle: {
     color: drawerHeaderColor,
     fontFamily: "Roboto",
-    fontWeight: "500",
+    fontWeight: "800",
     fontSize: 14
   },
   drawerEmail: {
     color: drawerHeaderColor,
     fontFamily: "Roboto",
-    fontWeight: "400",
+    fontWeight: "800",
     fontSize: 14
   },
   activeDrawerItem: {
