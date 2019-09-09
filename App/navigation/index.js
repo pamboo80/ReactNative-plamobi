@@ -1,2 +1,2 @@
-export * from './BaseNavigator';
+export * from './BottomNavigator';
 export * from './routes';

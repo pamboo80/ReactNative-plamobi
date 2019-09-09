@@ -4,7 +4,7 @@ import {
     StyleSheet,
   } from 'react-native';
 import {createAppContainer, createBottomTabNavigator, createStackNavigator} from 'react-navigation';
-import Icon from 'react-native-vector-icons/FontAwesome';
+//import Icon from 'react-native-vector-icons/FontAwesome';
 import {MultiBar, MultiBarToggle} from '../components/Multibar';
 
 import Home from '../tabs/Home';
@@ -149,11 +149,11 @@ const expandStyles = StyleSheet.create({
     }
 });
 
-const BaseNavigatorContainer = createAppContainer(createStackNavigator({
+const BottomNavigatorContainer = createAppContainer(createStackNavigator({
     [Routes.Tabs]: TabsNavigator,
     [Routes.OtherScreen]: Settings
 }, {
     headerMode: 'none'
 }));
 
-export {BaseNavigatorContainer as BaseNavigator};
+export {BottomNavigatorContainer as BottomNavigator};

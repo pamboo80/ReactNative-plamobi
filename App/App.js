@@ -22,7 +22,7 @@ import reducer from './Redux/reducers';
 import { setNavigator, setActiveRoute } from "./Redux/actions";
 import DrawerContent from './navigation/DrawerContent';
 import Toolbar from './navigation/Toolbar';
-import {BaseNavigator} from "./navigation";
+import {BottomNavigator} from "./navigation";
 import { bgStatusBar, bgDrawer } from './global.styles';
   
 let store = createStore(reducer);
@@ -82,7 +82,7 @@ export default class App extends Component {
                   animated
               />
               <Toolbar showMenu={this.openDrawer} />              
-              <BaseNavigator/>
+              <BottomNavigator/>
             </View>
           </DrawerLayoutAndroid>
         </Provider>
@@ -96,12 +96,3 @@ container: {
     backgroundColor: '#fff'
 },
 });
-
-// export default App = () => (
-//     <View style={{
-//         flex: 1,
-//         backgroundColor: '#fff'
-//     }}>
-//         <BaseNavigator/>
-//     </View>
-// );

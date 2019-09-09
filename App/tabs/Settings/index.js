@@ -9,7 +9,7 @@ export default class Settings extends React.Component {
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                <Text>Settings</Text>
+                <Text>Yet to be implemented!</Text>
             </SafeAreaView>
         );
     }
