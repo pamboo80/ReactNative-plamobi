@@ -7,7 +7,7 @@ import {createAppContainer, createBottomTabNavigator, createStackNavigator} from
 //import Icon from 'react-native-vector-icons/FontAwesome';
 import {MultiBar, MultiBarToggle} from '../components/Multibar';
 
-import Home from '../tabs/Home';
+import Map from '../tabs/Map';
 import List from '../tabs/List';
 import Chat from '../tabs/Chat';
 import Notifications from '../tabs/Notifications';
@@ -18,10 +18,10 @@ import {BottomTabRoutes as Routes} from "./BottomTabRoutes";
 import { primaryLight, primaryDark } from '../global.styles';
 
 const TabsNavigator = createBottomTabNavigator({
-    [Routes.TabsHome]: {
-            screen: Home,
+    [Routes.TabsMap]: {
+            screen: Map,
             navigationOptions: {
-              tabBarLabel: 'Home',
+              tabBarLabel: 'Map',
               tabBarIcon: ({ tintColor }) => (
                 <Image 
                   source={require('../assets/images/ic_map.png')}

@@ -6,18 +6,20 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-export class Booking extends React.Component {
+export class Filters extends React.Component {
   render() {
       return (
-       <BookingView/>
+       <FiltersView/>
       );
   }
 }
 
-const BookingView = ({ activeRoute }) => (
+
+const FiltersView = ({ activeRoute }) => (
   <ScrollView contentContainerStyle={styles.view}>
-    <Text style={styles.header1}>{activeRoute.name}</Text>
-    <Text style={styles.text}>Welcome! Here you can book your next trip!!</Text>
+    <Text style={styles.header1}>Filters</Text>  
+    {/* {activeRoute.name} */}
+    <Text style={styles.text}>Yet to be implemented!</Text>
   </ScrollView>
 );
 
@@ -49,4 +51,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-)(Booking);
+)(Filters);

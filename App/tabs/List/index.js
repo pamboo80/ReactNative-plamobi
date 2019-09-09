@@ -13,12 +13,13 @@ const routeConfig = {
 }
 
 const StackNavigatorConfig = {
-  navigationOptions: {
-    headerBackTitleStyle: {
-      color: 'red',
-    },
-    headerTintColor: 'red'
-  }
+  // navigationOptions: {
+  //   headerBackTitleStyle: {
+  //     color: 'red',
+  //   },
+  //   headerTintColor: 'red'
+  // }
+  headerMode: 'none'
 }
 
 export default Home = createStackNavigator(routeConfig, StackNavigatorConfig);

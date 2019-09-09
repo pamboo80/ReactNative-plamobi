@@ -16,7 +16,7 @@ import {
   bgDrawerActiveItem,
   drawerHeaderColor
 } from "../global.styles";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+//import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { navigateTo } from "../Redux/actions";
 
 const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => (
@@ -28,7 +28,7 @@ const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => (
          <Image
             resizeMode='contain'
             source={require('../assets/images/ic_person_blue.png')}
-            style={styles.icon}
+            style={styles.image32}
           />    
       </View>
       <View style={styles.subTitle}>
@@ -37,7 +37,7 @@ const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => (
       </View>
     </View>
   </ImageBackground>  
-    {routes.map(route => (
+    {routes.map(route => (route.name==="My Profile" || route.name==="Filters" || route.name==="Settings") && (
       <TouchableOpacity
         key={route.screen}
         onPress={() => {
@@ -50,13 +50,17 @@ const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => (
             : styles.drawerItem
         }
       >
-        {route.icon && (
+        {route.image && (
           <View style={styles.drawerItemLogo}>
-            <Icon
+            {/* <Icon
               name={route.icon}
               size={30}
               color={activeRoute.name === route.name ? "#fff" : "#000"}
-            />
+            /> */}
+            <Image           
+            source={route.image}
+            style={styles.image30}
+            />    
           </View>
         )}
         <Text
@@ -66,7 +70,7 @@ const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => (
               : { color: "#000" }
           }
         >
-          {route.name}
+        {route.name}
         </Text>
       </TouchableOpacity>
     ))}
@@ -77,7 +81,7 @@ DrawerContent.propTypes = {
   activeRoute: PropTypes.shape({
     name: PropTypes.string.isRequired,
     screen: PropTypes.any.isRequired,
-    icon: PropTypes.string.isRequired
+    image: PropTypes.string.isRequired
   }).isRequired,
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
   navigateTo: PropTypes.func.isRequired,
@@ -92,7 +96,11 @@ const styles = StyleSheet.create({
     height: 170
     //backgroundColor: bgDrawerHeader
   },
-  icon: {
+  image30: {
+    width: 30,
+    height: 30
+  },
+  image32: {
     width: 32,
     height: 32
   },

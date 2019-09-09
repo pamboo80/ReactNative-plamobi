@@ -1,6 +1,6 @@
 const BottomTabRoutes = {
     Tabs: 'TABS',
-    TabsHome: 'TABS_HOME',
+    TabsMap: 'TABS_MAP',
     TabsList: 'TABS_LIST',
     TabsChat: 'TABS_CHAT',
     TabsNotifications: 'TABS_NOTIFICATIONS',

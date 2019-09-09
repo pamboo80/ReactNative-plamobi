@@ -9,41 +9,36 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { navigateTo } from '../Redux/actions';
-const backgroundImage = require('../assets/images/bg_travel.jpeg');
 
-export class Travel extends React.Component {
+export class MyProfile extends React.Component {
   render() {
       return (
-       <TravelView/>
+       <MyProfileView/>
       );
   }
 }
 
-const TravelView = ({ activeRoute, navigateTo }) => (
-    <ImageBackground
-      source={backgroundImage}
-      style={styles.container}
-      imageStyle={{ opacity: 0.3 }}
-    >
+const MyProfileView = ({ activeRoute, navigateTo }) => (
+    
       <ScrollView contentContainerStyle={styles.view}>
-          <Text style={styles.header1}>{activeRoute.name}</Text>
+          <Text style={styles.header1}>My Profile</Text>
+          {/* {activeRoute.name} */}
           <Text style={styles.text}>
-              Book your next trip by clicking the button below.
+              Click the below button to navigate to filters page.
           </Text>
           <Button
-            title="Book your trip"
+            title="Add Filters"
             style={styles.button}
-            onPress={() => { navigateTo('Booking'); }}
+            onPress={() => { navigateTo('Filters'); }}
           />
-      </ScrollView>
-    </ImageBackground>
+      </ScrollView>   
 );
 
-Travel.propTypes = {
+MyProfile.propTypes = {
   activeRoute: PropTypes.shape({
     name: PropTypes.string.isRequired,
     screen: PropTypes.any.isRequired,
-    icon: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
   }).isRequired,
   navigateTo: PropTypes.func.isRequired,
 };
@@ -86,5 +81,5 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Travel);
+)(MyProfile);
 

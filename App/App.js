@@ -22,7 +22,7 @@ import reducer from './Redux/reducers';
 import { setNavigator, setActiveRoute } from "./Redux/actions";
 import DrawerContent from './navigation/DrawerContent';
 import Toolbar from './navigation/Toolbar';
-import {BottomNavigator} from "./navigation";
+import AppNavigation from "./navigation/AppNavigation";
 import { bgStatusBar, bgDrawer } from './global.styles';
   
 let store = createStore(reducer);
@@ -32,14 +32,20 @@ let store = createStore(reducer);
 const getDrawerWidth = () => Dimensions.get('window').width - (Platform.OS === 'android' ? 56 : 64);
 
 export default class App extends Component {
+
+    // state = {
+    //   showAppNavigator: false    
+    // };
+
     constructor() {
       super();
   
       this.drawer = React.createRef();
-      this.navigator = React.createRef();
+      this.navigator = React.createRef();     
     }
   
     componentDidMount() {
+      //this.setState({showAppNavigator: false}) // to hide it
       store.dispatch(setNavigator(this.navigator.current));
     }
   
@@ -82,7 +88,13 @@ export default class App extends Component {
                   animated
               />
               <Toolbar showMenu={this.openDrawer} />              
-              <BottomNavigator/>
+              <AppNavigation
+                onNavigationStateChange={(prevState, currentState) => {
+                  const currentScreen = this.getActiveRouteName(currentState);
+                  store.dispatch(setActiveRoute(currentScreen));
+                }}
+                ref={this.navigator}  
+                />                                                                             
             </View>
           </DrawerLayoutAndroid>
         </Provider>

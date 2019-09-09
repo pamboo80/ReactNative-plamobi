@@ -6,47 +6,22 @@ import {
   Linking,
   StyleSheet
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class About extends React.Component {
   render() {
       return (
         <ScrollView contentContainerStyle={styles.view}>
-        <Text style={styles.h1}>About</Text>
-        <Text style={[styles.text, styles.p]}>This is the third version of my React Native template. It is a
-          sidemenu boilerplate for Android. It has some awesome features such as the new <Text onPress={() =>
-            Linking.openURL('https://reactnavigation.org/')}
-            style={styles.linkCredits}
-          >React Navigation</Text> component, as well the awesom <Text onPress={() =>
-            Linking.openURL('https://github.com/oblador/react-native-vector-icons')}
-            style={styles.linkCredits}
-          >React Native Vector Icons, </Text> Android overflow menu, e much more.
+        <Text style={styles.h1}>Advertise Yourself</Text>
+        <Text style={[styles.text, styles.p]}>plaMobi is a peer-to-peer (P2P) decentralized Ethereum blockchain application in which service seeker and service provider meet without the need of middlemen, enter into trustless smart contracts with reputation and money in escrow, and take advantage of a decentralized system of moderators if needed.
         </Text>
-        <Text style={[styles.text, styles.p]}>You can use this project as a
-          starting point for yours, as well as collaborate with improvements
-          by github pull requests. This is a simple prototype and can be
-          modified according to your needs.</Text>
-        <Text style={[styles.text, styles.p]}>Thank you for trying my template.</Text>
-        <Text style={styles.signature}>Pablo Rodrigo Darde</Text>
-        <Text style={styles.position}>Front end engineer</Text>
-        <View style={styles.social}>
-          <Icon name="logo-linkedin" size={30} color="#2962FF" style={{marginRight: 10}} />
-          <Text onPress={() =>
-            Linking.openURL('https://www.linkedin.com/in/pablodarde')}
-            style={styles.link}
-          >
-            www.linkedin.com/in/pablodarde
-          </Text>
-        </View>
-        <View style={styles.social}>
-          <Icon name="logo-github" size={30} color="#2962FF" style={{marginRight: 10}} />
-          <Text onPress={() =>
-            Linking.openURL('https://github.com/darde')}
-            style={styles.link}
-          >
-            https://github.com/darde
-          </Text>
-        </View>
+        <Text style={[styles.text, styles.p]}>We collide reputation and economic initiatives into one by tokenizing reputation and giving it value. All parties, moderators included, have strong and aligned initiatives to act honestly, since everyone has something of value at stake and something to gain if the desired outcome is achieved.
+        </Text>
+        <Text style={[styles.text, styles.p]}>Identity verification and reputation data on the blockchain ensures safe, reputable service providers. And smart contracts enable secure and reliable payments directly from one party to another.      
+        </Text>                     
+        <Text onPress={() =>
+            Linking.openURL('https://www.plamobi.com/')}
+            style={styles.linkCredits}
+          >www.plamobi.com</Text>
       </ScrollView>
       );
   }

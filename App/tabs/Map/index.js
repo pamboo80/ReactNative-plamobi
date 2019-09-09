@@ -56,7 +56,7 @@ export async function requestLocationPermission(parent)
     };
 };
 
-export default class Home extends React.Component {
+export default class Map extends React.Component {
 
   constructor(props){
     super(props);
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     top: 0,
     opacity: 0.0,
     height: Dimensions.get('window').height,
-    width: 10,
+    width: 14,
   },
   radius: {
     height: 50,
