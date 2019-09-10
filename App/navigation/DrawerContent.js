@@ -22,7 +22,7 @@ import { navigateTo } from "../Redux/actions";
 const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => (
   <ScrollView>
     <ImageBackground source={require('../assets/images/background_account.png')}
-      style={{width: '100%', height: 170}}>
+      style={{width: '100%', height: 170, marginBottom:10}}>
       <View style={styles.header}>
       <View style={styles.headerLogo}>      
          <Image
@@ -39,7 +39,8 @@ const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => (
   </ImageBackground>  
     {routes.map(route => (route.name==="My Profile" || route.name==="Filters" || route.name==="Settings") && (
       <TouchableOpacity
-        key={route.screen}
+        activeOpacity={.6}
+        key={route.name}
         onPress={() => {
           closeDrawer();
           navigateTo(route.name);
@@ -64,10 +65,10 @@ const DrawerContent = ({ navigateTo, activeRoute, routes, closeDrawer }) => (
           </View>
         )}
         <Text
-          style={
+          style={ 
             activeRoute.name === route.name
-              ? { color: "#fff" }
-              : { color: "#000" }
+              ? { color: "#000", fontSize: 14.5 } //fff
+              : { color: "#000", fontSize: 14.5 } 
           }
         >
         {route.name}
@@ -81,7 +82,7 @@ DrawerContent.propTypes = {
   activeRoute: PropTypes.shape({
     name: PropTypes.string.isRequired,
     screen: PropTypes.any.isRequired,
-    image: PropTypes.string.isRequired
+    image: PropTypes.any.isRequired
   }).isRequired,
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
   navigateTo: PropTypes.func.isRequired,
@@ -115,22 +116,23 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     height: 56,
-    paddingTop: 12
+    paddingTop: 10,
+    paddingLeft: 6
   },
   drawerTitle: {
     color: drawerHeaderColor,
     fontFamily: "Roboto",
     fontWeight: "800",
-    fontSize: 14
+    fontSize: 14.5
   },
   drawerEmail: {
     color: drawerHeaderColor,
     fontFamily: "Roboto",
     fontWeight: "800",
-    fontSize: 14
+    fontSize: 14.5
   },
   activeDrawerItem: {
-    backgroundColor: bgDrawerActiveItem
+    backgroundColor: "#fff" //bgDrawerActiveItem
   },
   drawerItem: {
     flexDirection: "row",

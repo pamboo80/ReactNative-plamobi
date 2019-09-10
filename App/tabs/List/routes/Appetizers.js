@@ -33,5 +33,7 @@ export default class Appetizers extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: 70,
+    marginTop: 20
   }
 })

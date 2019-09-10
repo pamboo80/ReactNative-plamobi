@@ -11,15 +11,8 @@ export default class Credits extends React.Component {
   render() {
       return (
       <ScrollView contentContainerStyle={styles.view}>
-      <Text style={styles.h1}>Credits</Text>
-      <Text style={[styles.text, styles.p]}>This template uses images
-        from <Text onPress={() =>
-          Linking.openURL('https://github.com/oblador/react-native-vector-icons')}
-          style={styles.linkCredits}
-        >
-          Mental Floss </Text> web site.
-      </Text>
-      <Text style={[styles.text, styles.p]}>This tamplate also uses icon
+      <Text style={styles.h1}>Credits</Text>      
+      <Text style={[styles.text, styles.p]}>This app uses icon
         fonts from <Text onPress={() =>
         Linking.openURL('https://github.com/oblador/react-native-vector-icons')}
         style={styles.linkCredits}

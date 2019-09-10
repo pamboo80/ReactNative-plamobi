@@ -68,7 +68,7 @@ const TabsNavigator = createBottomTabNavigator({
                             icon: 
                                 (
                                     <Image
-                                    source={require('../assets/images/ic_message_email.png')} 
+                                    source={require('../assets/images/ic_camera.png')} 
                                     style={[expandStyles.icon]}                                       
                                     />
                                 )                              
@@ -79,7 +79,7 @@ const TabsNavigator = createBottomTabNavigator({
                             icon: 
                             (
                                 <Image
-                                source={require('../assets/images/ic_search.png')}   
+                                source={require('../assets/images/ic_message_email.png')}   
                                 style={[expandStyles.icon]}                                  
                                 />
                             )                            
@@ -144,8 +144,8 @@ const styles = StyleSheet.create({
 
 const expandStyles = StyleSheet.create({
     icon: {
-      width: 22,
-      height: 22
+      width: 24,
+      height: 24
     }
 });
 

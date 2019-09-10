@@ -24,7 +24,7 @@ const MyProfileView = ({ activeRoute, navigateTo }) => (
           <Text style={styles.header1}>My Profile</Text>
           {/* {activeRoute.name} */}
           <Text style={styles.text}>
-              Click the below button to navigate to filters page.
+              Click the below button to navigate to Filters page.
           </Text>
           <Button
             title="Add Filters"
@@ -38,7 +38,7 @@ MyProfile.propTypes = {
   activeRoute: PropTypes.shape({
     name: PropTypes.string.isRequired,
     screen: PropTypes.any.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.any.isRequired,
   }).isRequired,
   navigateTo: PropTypes.func.isRequired,
 };

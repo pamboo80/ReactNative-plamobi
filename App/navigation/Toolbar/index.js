@@ -11,7 +11,7 @@ class Toolbar extends React.Component {
     activeRoute: PropTypes.shape({
       name: PropTypes.string.isRequired,
       screen: PropTypes.any.isRequired,
-      image: PropTypes.string.isRequired
+      image: PropTypes.any.isRequired
     }).isRequired,
     routes: PropTypes.arrayOf(PropTypes.object).isRequired,
     showMenu: PropTypes.func.isRequired,
