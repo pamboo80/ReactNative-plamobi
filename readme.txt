@@ -63,3 +63,8 @@ C:\plamobi> npm install react-native-quick-actions --save
 # 18. Add side menu with RN navigation, Toolbar and Drawer component + Redux
 C:\plamobi> npm install redux --save 
 C:\plamobi> npm install react-redux --save 
+
+
+To Run:
+npm install
+react-native run-andoid
